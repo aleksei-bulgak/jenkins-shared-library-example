@@ -1,0 +1,1 @@
+This is test repository was created to understand how and when I can use Jenkins Shared libraries
