@@ -1,5 +1,5 @@
 // vars/helloWorld.groovy
 
-def call(body){
-	print "Hello world"
+def call(String textMessage){
+	print textMessage
 }
