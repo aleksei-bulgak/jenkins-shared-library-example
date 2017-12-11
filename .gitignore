@@ -4,3 +4,4 @@
 
 *.project
 *.iml*
+*.classpath*
