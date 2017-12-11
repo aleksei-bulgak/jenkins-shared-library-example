@@ -1,11 +1,11 @@
-<b>helloWorld</b> is just simple custom step.
+*helloWorld* is just simple custom step.
 The only thing it can do - print incoming message into job's console output
 
 Example:
-<code>
-	//Jenkinsfile
-	node{
-		helloWorld "Some text message";
-		helloWorld("Some text message");
-	}
-</code>
+```
+//Jenkinsfile
+node{
+	helloWorld "Some text message";
+	helloWorld("Some text message");
+}
+```
