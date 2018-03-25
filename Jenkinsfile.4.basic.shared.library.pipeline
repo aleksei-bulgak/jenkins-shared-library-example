@@ -1,0 +1,29 @@
+node {
+	def lib = 	library (
+		identifier: 'first-lib@first-step', // unique name of your shared lib and branch/tag specifier 
+		retriever: 
+			modernSCM([
+                // ddownload shared library function
+			])
+	)
+
+    lib.by.bulgak.jenkins.lib.Checkout.new().checkout(
+        "git@github.com:aleksei-bulgak/jenkins-shared-library-example.git",
+        "master"
+    );
+
+    def mvnStatic = lib.by.bulgak.jenkins.lib.MavenHelperStatic.new();
+    stage("Compile"){
+        //sh("${tool 'Apache Maven 3.3.9'}/bin/mvn compile")
+        mvnStatic.mvn("compile");
+    }
+    stage("Test"){
+        //sh("${tool 'Apache Maven 3.3.9'}/bin/mvn test")
+        lib.by.bulgak.jenkins.lib.MavenHelperStatic.new().mvn("test");
+    }
+    stage("Install"){
+        //sh("${tool 'Apache Maven 3.3.9'}/bin/mvn install")
+        def maven = lib.by.bulgak.jenkins.lib.MavenHelper.new(this);
+        maven.mvn("install");
+    }
+}

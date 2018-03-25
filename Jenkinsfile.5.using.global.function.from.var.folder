@@ -1,0 +1,30 @@
+node {
+	def lib = 	library (
+		identifier: 'first-lib@first-step', // unique name of your shared lib and branch/tag specifier 
+		retriever: 
+			modernSCM([
+                // ddownload shared library function
+			])
+	)
+
+    lib.by.bulgak.jenkins.lib.Checkout.new().checkout(
+        "git@github.com:aleksei-bulgak/jenkins-shared-library-example.git",
+        "master"
+    );
+
+    mavenStep{
+        name = "Compile"
+        action = "compile"
+    }
+
+
+    mavenStep{
+        name = "Run Tests"
+        action = "test"
+    }
+    
+    mavenStep{
+        name = "Build code and put into local repository"
+        action = "install"
+    }
+}

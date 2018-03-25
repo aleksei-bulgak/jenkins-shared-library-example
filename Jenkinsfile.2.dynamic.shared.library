@@ -1,0 +1,14 @@
+node{
+
+    library "static-shared-lib@master"
+	helloWorld "Hello from library function"
+	
+    library ("static-shared-lib@master").by.bulgak.jenkins.lib.HelloWorld.new(this).say("Hello frm class")
+
+    def lib = library "static-shared-lib@master"
+    helloWorld "Hello from library function"
+    lib.by.bulgak.jenkins.lib.HelloWorld.new(this).say("Hello frm class")
+    
+    lib2 = library ("static-shared-lib@master").by.bulgak.jenkins.lib
+    lib2.HelloWorld.new(this).say("Hello")
+}

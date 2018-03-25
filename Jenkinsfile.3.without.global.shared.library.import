@@ -1,0 +1,11 @@
+node {
+	def lib = library (
+		identifier: 'first-lib@master', // unique name of your shared lib and branch/tag specifier 
+		retriever: 
+			modernSCM([
+                // ddownload shared library function
+			])
+	)
+	helloWorld "Hello from shared library"
+	lib.by.bulgak.jenkins.lib.HelloWorld.say("Same Hello world text", this)
+}
